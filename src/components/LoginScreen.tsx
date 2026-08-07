@@ -28,6 +28,11 @@ export default function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
       ) {
         // Gently reset without scary warning if closed by user
         setErrorMsg(null);
+      } else if (err.code === 'auth/unauthorized-domain') {
+        const currentDomain = window.location.hostname;
+        setErrorMsg(
+          `Domain "${currentDomain}" belum didaftarkan di Firebase Console. Silakan buka Firebase Console > Authentication > Settings > Authorized domains dan tambahkan "${currentDomain}".`
+        );
       } else if (err.code !== 'auth/popup-blocked') {
         console.error('Login failed:', err);
         setErrorMsg(
