@@ -1,0 +1,6 @@
+{
+  "name": "Imat Abu Kamal",
+  "description": "Portfolio web app dengan visual modern, integrasi data Google Sheets, dan formulir kontak dinamis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

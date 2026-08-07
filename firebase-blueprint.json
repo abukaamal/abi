@@ -1,0 +1,127 @@
+{
+  "entities": {
+    "Beranda": {
+      "title": "Beranda",
+      "description": "Content for home/hero section",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "subtitles": { "type": "array" },
+        "experience": { "type": "string" },
+        "image_url": { "type": "string" },
+        "image_url_2": { "type": "string" },
+        "image_url_3": { "type": "string" },
+        "image_url_4": { "type": "string" },
+        "image_url_5": { "type": "string" },
+        "logo_name": { "type": "string" }
+      }
+    },
+    "Tentang": {
+      "title": "Tentang",
+      "description": "About section details",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "descriptions": { "type": "array" },
+        "skills": { "type": "string" },
+        "achievement": { "type": "string" },
+        "image_url": { "type": "string" }
+      }
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Skill / portfolio card in gallery",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "desc": { "type": "string" },
+        "icon": { "type": "string" },
+        "color": { "type": "string" },
+        "link": { "type": "string" }
+      }
+    },
+    "Contact": {
+      "title": "Contact",
+      "description": "Contact info and map settings",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "map_url": { "type": "string" }
+      }
+    },
+    "Footer": {
+      "title": "Footer",
+      "description": "Footer social links & copyright",
+      "type": "object",
+      "properties": {
+        "copyright": { "type": "string" },
+        "github": { "type": "string" },
+        "linkedin": { "type": "string" },
+        "twitter": { "type": "string" },
+        "instagram": { "type": "string" },
+        "facebook": { "type": "string" },
+        "youtube": { "type": "string" }
+      }
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Form submission entries sent by visitors",
+      "type": "object",
+      "properties": {
+        "nama": { "type": "string" },
+        "email": { "type": "string" },
+        "telpon": { "type": "string" },
+        "alamat": { "type": "string" },
+        "pesan": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "UserLogin": {
+      "title": "UserLogin",
+      "description": "Log of user logins via Google Auth",
+      "type": "object",
+      "properties": {
+        "nama": { "type": "string" },
+        "email": { "type": "string" },
+        "picture": { "type": "string" },
+        "timestamp": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/content/beranda": {
+      "schema": { "$ref": "#/entities/Beranda" },
+      "description": "Beranda section content"
+    },
+    "/content/tentang": {
+      "schema": { "$ref": "#/entities/Tentang" },
+      "description": "Tentang section content"
+    },
+    "/gallery/{itemId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Gallery items collection"
+    },
+    "/content/contact": {
+      "schema": { "$ref": "#/entities/Contact" },
+      "description": "Contact details"
+    },
+    "/content/footer": {
+      "schema": { "$ref": "#/entities/Footer" },
+      "description": "Footer settings"
+    },
+    "/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/Message" },
+      "description": "Submitted contact messages"
+    },
+    "/logins/{loginId}": {
+      "schema": { "$ref": "#/entities/UserLogin" },
+      "description": "Recorded user logins"
+    }
+  }
+}

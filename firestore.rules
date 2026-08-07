@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Content documents (beranda, tentang, contact, footer) - Public read, write if authenticated
+    match /content/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Gallery items - Public read, write if authenticated
+    match /gallery/{itemId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Messages submitted by visitors/users - Anyone can submit, authenticated can read/delete
+    match /messages/{messageId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Login logs - Created on login, authenticated can read
+    match /logins/{loginId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Access logs - Created on access, authenticated can read
+    match /user_access_logs/{logId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Default rule
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
