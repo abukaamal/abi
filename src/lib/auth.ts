@@ -13,8 +13,6 @@ import {
   inMemoryPersistence 
 } from 'firebase/auth';
 import { initializeFirestore, getFirestore, collection, addDoc, getDocs, doc, setDoc, query, orderBy, limit, serverTimestamp } from 'firebase/firestore';
-import firebaseConfigRaw from '../../firebase-applet-config.json';
-
 const getFirebaseConfig = () => {
   const envConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -25,15 +23,17 @@ const getFirebaseConfig = () => {
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
   };
 
-  const jsonConfig = (firebaseConfigRaw as any) || {};
+  // Use import.meta.glob to gracefully load config without breaking Vite build if the file is missing in CI/CD
+  const configModules = import.meta.glob('../../firebase-applet-config.json', { eager: true });
+  const jsonConfig: any = (configModules['../../firebase-applet-config.json'] as any)?.default || {};
 
   return {
-    apiKey: envConfig.apiKey || jsonConfig.apiKey || '',
+    apiKey: envConfig.apiKey || jsonConfig.apiKey || 'AIzaSyAyiQFMYvZBsKLD5SpIWQ8vEnEo6gwMZmU',
     authDomain: envConfig.authDomain || jsonConfig.authDomain || 'gen-lang-client-0463518042.firebaseapp.com',
-    projectId: envConfig.projectId || jsonConfig.projectId || '',
-    storageBucket: envConfig.storageBucket || jsonConfig.storageBucket || '',
-    messagingSenderId: envConfig.messagingSenderId || jsonConfig.messagingSenderId || '',
-    appId: envConfig.appId || jsonConfig.appId || '',
+    projectId: envConfig.projectId || jsonConfig.projectId || 'gen-lang-client-0463518042',
+    storageBucket: envConfig.storageBucket || jsonConfig.storageBucket || 'gen-lang-client-0463518042.firebasestorage.app',
+    messagingSenderId: envConfig.messagingSenderId || jsonConfig.messagingSenderId || '924868470204',
+    appId: envConfig.appId || jsonConfig.appId || '1:924868470204:web:89b73cc5a94df5356537b9',
     firestoreDatabaseId: import.meta.env.VITE_FIREBASE_DATABASE_ID || jsonConfig.firestoreDatabaseId || 'ai-studio-abukaamal-dc3580e3-4ebf-42ac-9362-f55b50f98cfa'
   };
 };
