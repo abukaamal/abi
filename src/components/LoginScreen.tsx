@@ -45,11 +45,11 @@ export default function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-900 text-slate-100 flex items-center justify-center px-6 sm:px-8 py-8 relative overflow-hidden font-sans">
+    <div className="min-h-screen w-full bg-slate-900 text-slate-100 flex items-center justify-center px-4 sm:px-8 py-8 relative overflow-hidden font-sans">
       {/* Subtle Background Lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="w-full max-w-[340px] bg-slate-800/80 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-7 sm:p-9 shadow-2xl relative z-10 text-center flex flex-col items-center">
+      <div className="w-full max-w-[340px] sm:max-w-[380px] bg-slate-800/80 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-7 sm:p-9 shadow-2xl relative z-10 text-center flex flex-col items-center transition-all">
         {/* Minimal Icon */}
         <div className="w-14 h-14 rounded-2xl bg-blue-600/20 border border-blue-500/30 mb-5 flex items-center justify-center text-blue-400">
           <Mail className="w-7 h-7" />
